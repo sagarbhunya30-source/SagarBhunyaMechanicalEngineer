@@ -1,0 +1,323 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Theme palettes ----------
+   Colour channels are "R G B" so Tailwind opacity modifiers keep working.
+   --sheet-* colours are used inside SVG drawings (drawing sheets and demos). */
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+  --graphite-950: 14 16 19;
+  --graphite-900: 18 20 23;
+  --graphite-850: 22 25 29;
+  --graphite-800: 27 31 36;
+  --graphite-700: 36 42 49;
+  --graphite-600: 50 57 65;
+  --steel-100: 228 231 235;
+  --steel-200: 201 206 213;
+  --steel-300: 168 176 185;
+  --steel-400: 138 147 158;
+  --steel-500: 107 116 127;
+  --amber-300: 255 196 107;
+  --amber-400: 242 163 58;
+  --amber-500: 224 140 26;
+  --amber-600: 184 111 14;
+  --blueprint-300: 156 199 242;
+  --blueprint-400: 122 176 232;
+  --blueprint-500: 74 143 214;
+  --blueprint-700: 30 74 120;
+  --blueprint-900: 15 39 64;
+  --paper: 236 232 225;
+  --ink: 255 255 255;
+  --on-accent: 14 16 19;
+
+  --grid-major: rgba(122, 176, 232, 0.06);
+  --grid-minor: rgba(122, 176, 232, 0.03);
+  --steel-top: #2a3038;
+  --steel-bottom: #20252b;
+  --steel-streak: rgba(255, 255, 255, 0.018);
+
+  --sheet-bg: #102033;
+  --sheet-bg-2: #0d1a2a;
+  --sheet-panel: #16283d;
+  --sheet-grid: rgba(122, 176, 232, 0.1);
+  --sheet-line: rgba(122, 176, 232, 0.4);
+  --sheet-text: #9cc7f2;
+  --sheet-strong: #7ab0e8;
+  --sheet-accent: #f2a33a;
+  --sheet-muted: #6b747f;
+  --sheet-dim: #324152;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --graphite-950: 255 255 255;
+  --graphite-900: 243 241 236;
+  --graphite-850: 250 249 246;
+  --graphite-800: 255 255 255;
+  --graphite-700: 226 223 216;
+  --graphite-600: 200 196 188;
+  --steel-100: 38 44 52;
+  --steel-200: 52 59 68;
+  --steel-300: 72 80 90;
+  --steel-400: 92 101 112;
+  --steel-500: 125 133 143;
+  --amber-300: 140 72 0;
+  --amber-400: 168 88 0;
+  --amber-500: 196 110 10;
+  --amber-600: 120 62 0;
+  --blueprint-300: 22 78 140;
+  --blueprint-400: 30 92 160;
+  --blueprint-500: 52 115 190;
+  --blueprint-700: 170 196 226;
+  --blueprint-900: 226 236 248;
+  --paper: 17 20 24;
+  --ink: 20 24 30;
+  --on-accent: 255 255 255;
+
+  --grid-major: rgba(30, 92, 160, 0.08);
+  --grid-minor: rgba(30, 92, 160, 0.04);
+  --steel-top: #eef0f3;
+  --steel-bottom: #d9dde2;
+  --steel-streak: rgba(0, 0, 0, 0.025);
+
+  --sheet-bg: #f4f8fc;
+  --sheet-bg-2: #f4f8fc;
+  --sheet-panel: #dfeaf6;
+  --sheet-grid: rgba(30, 92, 160, 0.1);
+  --sheet-line: rgba(30, 92, 160, 0.45);
+  --sheet-text: #1e5ca0;
+  --sheet-strong: #2f6fb8;
+  --sheet-accent: #a85800;
+  --sheet-muted: #5c6570;
+  --sheet-dim: #b8c8da;
+}
+
+/* AutoCAD model-space palette: #212830 background, layer colours (yellow, cyan, red, green). */
+[data-theme='autocad'] {
+  color-scheme: dark;
+  --graphite-950: 22 27 33;
+  --graphite-900: 33 40 48;
+  --graphite-850: 38 46 56;
+  --graphite-800: 44 52 64;
+  --graphite-700: 59 68 83;
+  --graphite-600: 78 88 104;
+  --steel-100: 232 232 232;
+  --steel-200: 205 210 216;
+  --steel-300: 170 178 188;
+  --steel-400: 140 150 162;
+  --steel-500: 110 120 133;
+  --amber-300: 255 236 90;
+  --amber-400: 245 217 10;
+  --amber-500: 214 188 0;
+  --amber-600: 170 150 0;
+  --blueprint-300: 140 236 245;
+  --blueprint-400: 51 214 230;
+  --blueprint-500: 0 180 200;
+  --blueprint-700: 0 90 105;
+  --blueprint-900: 0 45 55;
+  --paper: 240 240 240;
+  --ink: 255 255 255;
+  --on-accent: 22 27 33;
+
+  --grid-major: rgba(150, 165, 185, 0.12);
+  --grid-minor: rgba(150, 165, 185, 0.05);
+  --steel-top: #2c3440;
+  --steel-bottom: #262d37;
+  --steel-streak: rgba(255, 255, 255, 0.015);
+
+  --sheet-bg: #212830;
+  --sheet-bg-2: #1c222a;
+  --sheet-panel: #2a3340;
+  --sheet-grid: rgba(150, 165, 185, 0.16);
+  --sheet-line: rgba(51, 214, 230, 0.5);
+  --sheet-text: #33d6e6;
+  --sheet-strong: #33d6e6;
+  --sheet-accent: #f5d90a;
+  --sheet-muted: #8a96a6;
+  --sheet-dim: #3a4554;
+
+  --cad-red: #ff4d4d;
+  --cad-green: #3be23b;
+  --cad-magenta: #ff5cff;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-graphite-900 font-sans text-paper antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 250ms ease, color 250ms ease;
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--amber-400));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: rgb(var(--amber-400));
+    color: rgb(var(--on-accent));
+  }
+}
+
+@layer components {
+  /* Fine engineering grid used as a section background */
+  .bg-grid {
+    background-image:
+      linear-gradient(var(--grid-major) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+      linear-gradient(var(--grid-minor) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+    background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+  }
+  /* Restrained brushed-steel surface */
+  .steel {
+    background:
+      repeating-linear-gradient(90deg, var(--steel-streak) 0 1px, transparent 1px 3px),
+      linear-gradient(180deg, var(--steel-top) 0%, var(--steel-bottom) 100%);
+  }
+  .panel {
+    @apply rounded-xl border border-white/10 bg-graphite-800/80 shadow-[0_1px_0_rgba(255,255,255,0.05)_inset,0_10px_30px_-12px_rgba(0,0,0,0.6)];
+  }
+  [data-theme='light'] .panel {
+    box-shadow: 0 1px 2px rgba(20, 24, 30, 0.06), 0 10px 30px -18px rgba(20, 24, 30, 0.25);
+  }
+  .engraved {
+    @apply font-mono text-[0.7rem] uppercase tracking-[0.16em] text-steel-400;
+  }
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-colors duration-150;
+  }
+  .btn-primary {
+    @apply btn bg-amber-400 text-on-accent hover:bg-amber-300;
+  }
+  [data-theme='light'] .btn-primary:hover {
+    background-color: rgb(var(--amber-600));
+  }
+  .btn-secondary {
+    @apply btn border border-white/20 bg-white/[0.03] text-paper hover:border-amber-400/70 hover:bg-white/[0.06];
+  }
+  .btn-ghost {
+    @apply btn text-steel-200 hover:text-amber-300;
+  }
+  .section-label {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-blueprint-400;
+  }
+  .section-title {
+    @apply mt-2 text-3xl font-semibold tracking-tight text-paper sm:text-4xl;
+  }
+  .chip {
+    @apply inline-flex items-center rounded border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-xs text-steel-200;
+  }
+}
+
+/* Dimension line used under section headings */
+.dim-line {
+  position: relative;
+  height: 10px;
+  border-left: 1px solid rgb(var(--blueprint-500));
+  border-right: 1px solid rgb(var(--blueprint-500));
+}
+.dim-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 1px solid rgb(var(--blueprint-500));
+  opacity: 0.7;
+}
+
+@keyframes airflow {
+  from { stroke-dashoffset: 16; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------- AutoCAD theme ---------- */
+[data-theme='autocad'] h1,
+[data-theme='autocad'] h2,
+[data-theme='autocad'] h3 {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  letter-spacing: -0.01em;
+}
+[data-theme='autocad'] .panel {
+  border-radius: 4px;
+  box-shadow: none;
+}
+@media (min-width: 768px) {
+  /* Room for the command line */
+  [data-theme='autocad'] body { padding-bottom: 2.25rem; }
+}
+
+/* Wireframe visual style: parts are drawn as coloured outlines on layer colours */
+[data-theme='autocad'] .gear-body {
+  stroke-width: 1.4;
+}
+[data-theme='autocad'] .gear-amber .gear-body {
+  fill: rgba(245, 217, 10, 0.07);
+  stroke: #f5d90a;
+}
+[data-theme='autocad'] .gear-steel .gear-body,
+[data-theme='autocad'] .gear-dark .gear-body {
+  fill: rgba(51, 214, 230, 0.06);
+  stroke: #33d6e6;
+}
+[data-theme='autocad'] .gear-hub {
+  fill: #212830;
+  stroke: var(--cad-red);
+}
+[data-theme='autocad'] .gear-ring {
+  stroke: rgba(255, 255, 255, 0.18);
+}
+[data-theme='autocad'] .cad-wire :is(rect, path, circle, polygon) {
+  fill: rgba(255, 255, 255, 0.035);
+  stroke: var(--wire, #e8e8e8);
+  stroke-width: 1;
+}
+[data-theme='autocad'] .cad-wire line {
+  stroke: var(--wire, #e8e8e8);
+}
+[data-theme='autocad'] .cad-wire text {
+  fill: var(--wire, #e8e8e8);
+}
+
+/* Draw-in animation after switching to the AutoCAD theme */
+@keyframes cad-draw {
+  to { stroke-dashoffset: 0; }
+}
+.cad-drawing .gear-body {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: cad-draw 1.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.cad-drawing .cad-wire :is(rect, path, circle, polygon) {
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  animation: cad-draw 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes caret {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Print: resume-style view ----------
+   The interactive site is hidden and a plain resume (PrintResume.jsx) is printed instead. */
+.print-only { display: none; }
+@media print {
+  @page { size: A4; margin: 14mm; }
+  html, body { background: #fff !important; color: #111 !important; padding: 0 !important; }
+  .screen-only { display: none !important; }
+  .print-only { display: block !important; }
+}
